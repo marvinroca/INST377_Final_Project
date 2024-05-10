@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #ef5350; /* Red */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            list-style: none;
+            margin-right: 20px;
+        }
+
+        .nav-links li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ef5350;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        #searchInput {
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+            margin-left: auto;
+        }
+
+        #searchBtn {
+            padding: 8px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ffca28; /* Yellow */
+            color: #333;
+            cursor: pointer;
+        }
+
+        #searchBtn:hover {
+            background-color: #ffb300; /* Darker Yellow */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        #pokemonInfo {
+            margin: 20px auto;
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #randomPokemonImg {
+            max-width: 300px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .pokemon-name {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="pokemon_logo.png" alt="Pokemon Logo" class="logo">
+        </div>
+        <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#">Menu</a>
+                <div class="dropdown-content">
+                    <a href="#">About</a>
+                    <a href="#">Help</a>
+                </div>
+            </li>
+            <li><a href="#">Home</a></li>
+        </ul>
+        <input type="text" id="searchInput" placeholder="Search Pokemon...">
+        <button id="searchBtn" onclick="searchPokemon()">Search</button>
+    </nav>
+    <header>
+        <h1>Welcome to the PokeAPI Website</h1>
+    </header>
+    <div id="pokemonInfo"></div>
+    <footer>
+        <p>Pokemon of the Day: <span id="pokemonOfDay" class="pokemon-name"></span></p>
+        <img id="randomPokemonImg" src="" alt="Random Pokemon">
+        <p>Attack of the Day: <span id="attackOfDay" class="pokemon-name"></span></p>
+        <p>Pokemon Using the Attack: <span id="pokemonUsingAttack" class="pokemon-name"></span></p>
+    </footer>
+    <script>
+        function searchPokemon() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            fetch(`https://pokeapi.co/api/v2/pokemon/${searchQuery}`)
+                .then(response => response.json())
+                .then(data => {
+                    const pokemonInfo = document.getElementById('pokemonInfo');
+                    pokemonInfo.innerHTML = `
+                        <h2>${data.name.toUpperCase()}</h2>
+                        <img src="${data.sprites.front_default}" alt="${data.name}">
+                        <p>Type: ${data.types.map(type => type.type.name).join(', ')}</p>
+                        <p>Abilities: ${data.abilities.map(ability => ability.ability.name).join(', ')}</p>
+                        <p>Height: ${data.height / 10} m</p>
+                        <p>Weight: ${data.weight / 10} kg</p>
+                    `;
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                    alert('Pokemon not found!');
+                });
+        }
+
+        function getRandomPokemon() {
+            const randomID = Math.floor(Math.random() * 898) + 1; // There are 898 Pokemon in total
+            fetch(`https://pokeapi.co/api/v2/pokemon/${randomID}`)
+                .then(response => response.json())
+                .then(data => {
+                    const randomPokemonImg = document.getElementById('randomPokemonImg');
+                    randomPokemonImg.src = data.sprites.front_default;
+
+                    // Set Pokemon of the day
+                    const pokemonOfDay = document.getElementById('pokemonOfDay');
+                    pokemonOfDay.textContent = data.name.toUpperCase();
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                });
+        }
+
+        function getRandomAttack() {
+            fetch('https://pokeapi.co/api/v2/move?limit=1000')
+                .then(response => response.json())
+                .then(data => {
+                    const randomAttack = document.getElementById('attackOfDay');
+                    const randomIndex = Math.floor(Math.random() * data.results.length);
+                    randomAttack.textContent = data.results[randomIndex].name;
+
+                    // Get Pokemon using the attack
+                    fetch(`https://pokeapi.co/api/v2/move/${data.results[randomIndex].name}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const pokemonUsingAttack = document.getElementById('pokemonUsingAttack');
+                            pokemonUsingAttack.textContent = data.pokemon.map(pokemon => pokemon.pokemon.name).join(', ');
+                        })
+                        .catch(error => {
+                            console.log('Error:', error);
+                        });
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                });
+        }
+
+        // On page load
+        getRandomPokemon();
+        getRandomAttack();
+    </script>
+</body>
+</html>
