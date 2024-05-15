@@ -13,19 +13,18 @@
         <!-- Navigation Bar -->
         <nav>
             <div class="logo">
-                <img src="pokemon_logo.png" alt="Pokemon Logo" class="logo">
+                <img src="pokeball_img.png" alt="Pokemon Logo" class="logo">
             </div>
             <ul class="nav-links">
-                    <a href="poke.html">Home</a>
+                    <a href="home.html">Home</a>
+                    <a href="battle.html">Battle</a>
                     <a href="about.html">About</a>
                     <a href="help.html">Help</a>
                 </li>
             </ul>
-            <input type="text" id="searchInput" placeholder="Search Pokemon...">
-            <button id="searchBtn" onclick="searchPokemon()">Search</button>
         </nav>
     </body>
-    <form action="contact_info.php" method="post">
+    <form id="contactForm" onsubmit="return submitForm(); ">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
         <label for="email">Email:</label>
@@ -34,4 +33,10 @@
         <textarea id="message" name="message" rows="5" required></textarea>
         <input type="submit" value="Submit">
     </form> 
+    <script>
+        function submitForm(){
+            window.location.href = "successform.html";
+            return false;
+        }
+    </script>
 </html>
