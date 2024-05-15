@@ -1,0 +1,23 @@
+<head>
+    <title>SuccessPage</title>
+</head>
+<body>
+    <h1>Thanks for submitting, we will reach out soon!</h1>
+    <p>You will be redirected to the Homepage within the next 10 Seconds. If not, please click the Home page Icon below to be redirected.</p>
+    <a href="home.html">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWrWiXWikEBJCmFtfb-sHidD-y-SSRF0jjwvClieSIQA&s" alt="Home Page Icon" width="300" height="300">
+    </a>
+    <script>
+        setTimeout(function() {
+            window.location.href = "home.html";
+        }, 5000);
+    </script>
+</body>
+<style>
+    body{
+        align-items:center;
+        justify-content: center;
+        display:flex;
+        flex-direction:column;
+    }
+</style>
