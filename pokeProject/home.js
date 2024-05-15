@@ -3,8 +3,9 @@ function searchPokemon() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${searchQuery}`)
         .then(response => response.json())
         .then(data => {
-            const pokemonInfo = document.getElementById('pokemonInfo');
-            pokemonInfo.innerHTML = `
+            const pokemonContainer = document.getElementById('pokemonContainer');
+            pokemonContainer.style.display = 'block'; // Show the container
+            pokemonContainer.innerHTML = `
                 <h2>${data.name.toUpperCase()}</h2>
                 <img src="${data.sprites.front_default}" alt="${data.name}">
                 <p>Type: ${data.types.map(type => type.type.name).join(', ')}</p>
@@ -18,6 +19,7 @@ function searchPokemon() {
             alert('Pokemon not found!');
         });
 }
+
 
 function getRandomPokemon() {
     const randomID = Math.floor(Math.random() * 898) + 1; // There are 898 Pokemon in total
