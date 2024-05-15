@@ -5,8 +5,13 @@ body {
     padding: 0;
 }
 
+#main-nav {
+    
+}
+
 nav {
-    background-color: #ef5350; /* Red */
+    background-color: #ef5350;
+    /* Red */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -74,13 +79,15 @@ nav {
     padding: 8px 20px;
     border-radius: 5px;
     border: none;
-    background-color: #ffca28; /* Yellow */
+    background-color: #ffca28;
+    /* Yellow */
     color: #333;
     cursor: pointer;
 }
 
 #searchBtn:hover {
-    background-color: #ffb300; /* Darker Yellow */
+    background-color: #ffb300;
+    /* Darker Yellow */
 }
 
 header {
