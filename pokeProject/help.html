@@ -35,12 +35,6 @@
     </form> 
     <script>
         function submitForm(){
-            var regex = /^[a-zA-Z0-9\s]+$/;
-            var bigText = document.getElementById("bigText").value;
-            if(!regex.test(bigText)){
-                alert("Oh no! This contains special characters. Please correct!");
-                return false;
-            }
             window.location.href = "successform.html";
             return false;
         }
