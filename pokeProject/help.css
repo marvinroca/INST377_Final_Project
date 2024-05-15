@@ -85,3 +85,15 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #FFD700; 
 }
+
+.contactForm_info {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contactForm_info h2 {
+    margin-top: 0;
+}
