@@ -15,7 +15,7 @@
             <img src="pokeball_img.png" alt="Pokemon Logo" class="logo">
         </div>
         <h2 class="website left">Poke Website</h2>
-        <h1 class="page ">Welcome to the Home Page</h1>
+        <strong class="page ">Welcome to the Home Page</strong>
         <ul class="nav-links">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="battle.html">Battle</a></li>
@@ -25,11 +25,13 @@
         </ul>
     </nav>
     <header>
-        <h1>Welcome to the PokeAPI Website</h1>
+        <h2>Search for a pokemon</h2>
     </header>
     <input type="text" id="searchInput" placeholder="Search Pokemon...">
         <button id="searchBtn" onclick="searchPokemon()">Search</button>
-    <div id="pokemonInfo"></div>
+    <div id="pokemonContainer" style="display: none;"></div>
+
+    
     <footer>
         <p>Pokemon of the Day: <span id="pokemonOfDay" class="pokemon-name"></span></p>
         <img id="randomPokemonImg" src="" alt="Random Pokemon">
