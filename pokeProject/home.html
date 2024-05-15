@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="shared.css">
     <script src="shared.js" defer></script>
 </head>
+
 <body>
     <nav id="main-nav">
         <div class="logo left">
@@ -17,26 +19,29 @@
         <h2 class="website left">Poke Website</h2>
         <strong class="page ">Welcome to the Home Page</strong>
         <ul class="nav-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="battle.html">Battle</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="help.html">Help</a></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="battle.html">Battle</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="help.html">Help</a></li>
             </li>
         </ul>
     </nav>
-    <header>
-        <h2>Search for a pokemon</h2>
-    </header>
-    <input type="text" id="searchInput" placeholder="Search Pokemon...">
-        <button id="searchBtn" onclick="searchPokemon()">Search</button>
-    <div id="pokemonContainer" style="display: none;"></div>
 
-    
-    <footer>
+    <div id="container-1">
+        <header>
+            <h2 id="searchHeader">Search for a Pokemon!</h2>
+        </header>
+        <input type="text" id="searchInput" placeholder="Search Pokemon...">
+        <button id="searchBtn" onclick="searchPokemon()">Search</button>
+        <div id="pokemonContainer" style="display: none;"></div>
+    </div>
+    <div id="container-2">
         <p>Pokemon of the Day: <span id="pokemonOfDay" class="pokemon-name"></span></p>
         <img id="randomPokemonImg" src="" alt="Random Pokemon">
         <p>Attack of the Day: <span id="attackOfDay" class="pokemon-name"></span></p>
         <p>Pokemon Using the Attack: <span id="pokemonUsingAttack" class="pokemon-name"></span></p>
-    </footer>
+    </div>
+
 </body>
+
 </html>
