@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Info</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="pokemon_logo.png" alt="Pokemon Logo" class="logo">
+        </div>
+        <ul class="nav-links">
+                <a href="poke.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="help.html">Help</a>
+            </li>
+        </ul>
+        <input type="text" id="searchInput" placeholder="Search Pokemon...">
+        <button id="searchBtn" onclick="searchPokemon()">Search</button>
+    </nav>
+    <header>
+        <h1>Welcome to the PokeAPI Website</h1>
+    </header>
+    <div id="pokemonInfo"></div>
+    <footer>
+        <p>Pokemon of the Day: <span id="pokemonOfDay" class="pokemon-name"></span></p>
+        <img id="randomPokemonImg" src="" alt="Random Pokemon">
+        <p>Attack of the Day: <span id="attackOfDay" class="pokemon-name"></span></p>
+        <p>Pokemon Using the Attack: <span id="pokemonUsingAttack" class="pokemon-name"></span></p>
+    </footer>
+</body>
+</html>
