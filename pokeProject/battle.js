@@ -12,6 +12,7 @@ async function fetchPokemon() {
     await displayBattleResult(result, pokemon1, pokemon2);
     /* added new */
 }
+
 /* added new */
 function calculateBattleResult(pokemon1, pokemon2) {
     const stats1 = calculateTotalStats(pokemon1);
@@ -60,19 +61,27 @@ function calculateTotalStats(pokemon) {
 async function displayBattleResult(result, pokemon1, pokemon2) {
     const battleResultElement = document.getElementById('battleResult');
     battleResultElement.querySelector('h2').textContent = 'Battle Result';
+
     if (result.winner === 'tie') {
+        const tieImage = 'pika.jpeg'; // Path to your tie image
+        battleResultElement.querySelector('img').src = tieImage;
+        battleResultElement.querySelector('img').style.display = 'block'; // Show the image
         battleResultElement.querySelector('p.name').textContent = 'It\'s a tie!';
     } else {
-        const winnerPokemonName = result.winner === 'pokemon1' ? pokemon1.pokemon_name : pokemon2.pokemon_name;
-        battleResultElement.querySelector('p.name').textContent = 'Winner: ' + winnerPokemonName;
+        const winnerPokemon = result.winner === 'pokemon1' ? pokemon1 : pokemon2;
+        const winnerPokemonImage = await getPokemonImage(winnerPokemon.pokemon_name);
+        battleResultElement.querySelector('img').src = winnerPokemonImage;
+        battleResultElement.querySelector('p.name').textContent = 'Winner: ' + winnerPokemon.pokemon_name;
     }
+
     battleResultElement.querySelector('p.type').textContent = result.message;
-    // Hide image and stats
-    battleResultElement.querySelector('img').style.display = 'block';
+    // Clear other stats
     battleResultElement.querySelectorAll('p span').forEach(span => {
         span.textContent = '';
     });
 }
+
+
 
 
 async function getRandomPokemon() {

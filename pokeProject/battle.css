@@ -15,9 +15,11 @@ body {
 }
 
 .pokemon img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    /*display: none; /* Hide images by default */
 }
+
 
 #fetchPokemon {
     align-items: center;
@@ -34,6 +36,13 @@ body {
     align-content: center;
     text-align: center;
 }
+
+
+.winner-image {
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
 
 #pokemon1, #pokemon2, #battleResult {
     text-align: center;
