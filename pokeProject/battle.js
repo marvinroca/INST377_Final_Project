@@ -22,24 +22,28 @@ function calculateBattleResult(pokemon1, pokemon2) {
     const attackDifference = stats1.attack - stats2.attack;
     const defenseDifference = stats1.defense - stats2.defense;
 
+    const totalDifference = hpDifference + attackDifference + defenseDifference;
+
     // Determine the winner based on total stats
-    if (hpDifference > 0 && attackDifference > 0 && defenseDifference > 0) {
+    if (totalDifference < -20) {
+        return {
+            winner: 'pokemon2',
+            message: 'Great battle!'
+        };
+    } else if (totalDifference > 20) {
         return {
             
             winner: 'pokemon1',
             message: 'Great battle!'
         };
-    } else if (hpDifference < 0 && attackDifference < 0 && defenseDifference < 0) {
-        return {
-            winner: 'pokemon2',
-            message: 'Great battle!'
-        };
     } else {
+        // tie
         return {
             winner: 'tie',
             message: 'Both pokemon fought with all their might but it was a tie!'
         };
     }
+
 }
 
 function calculateTotalStats(pokemon) {
