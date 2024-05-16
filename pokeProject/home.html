@@ -26,22 +26,26 @@
             </li>
         </ul>
     </nav>
+    <div id="container-wrapper">
+        <div id="container-1">
+            <img src="pokeball_img.png" alt="Pokemon Logo" class="logo">
+            <header>
+                <h2 id="searchHeader">Search for a Pokemon!</h2>
+            </header>
+            <input type="text" id="searchInput" placeholder="Search Pokemon...">
+            <button id="searchBtn" onclick="searchPokemon()">Search</button>
+            <div id="pokemonContainer" style="display: none;"></div>
+        </div>
+        <div id="container-2">
+            <img src="pokeball_img.png" alt="Pokemon Logo" class="logo">
+            <p>Pokemon of the Day: <span id="pokemonOfDay" class="pokemon-name"></span></p>
+            <img id="randomPokemonImg" src="" alt="Random Pokemon">
+            <p>Attack of the Day: <span id="attackOfDay" class="pokemon-name"></span></p>
+        </div>
 
-    <div id="container-1">
-        <header>
-            <h2 id="searchHeader">Search for a Pokemon!</h2>
-        </header>
-        <input type="text" id="searchInput" placeholder="Search Pokemon...">
-        <button id="searchBtn" onclick="searchPokemon()">Search</button>
-        <div id="pokemonContainer" style="display: none;"></div>
     </div>
-    <div id="container-2">
-        <p>Pokemon of the Day: <span id="pokemonOfDay" class="pokemon-name"></span></p>
-        <img id="randomPokemonImg" src="" alt="Random Pokemon">
-        <p>Attack of the Day: <span id="attackOfDay" class="pokemon-name"></span></p>
-        <p>Pokemon Using the Attack: <span id="pokemonUsingAttack" class="pokemon-name"></span></p>
-    </div>
-
+    <footer>
+        <p>Thank you for being part of our Pokémon journey!</p>
+    </footer>
 </body>
-
 </html>

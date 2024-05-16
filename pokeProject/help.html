@@ -25,21 +25,25 @@
                 </li>
             </ul>
         </nav>
+        <div class="contactForm_info">
+            <h2>Contact Us</h2>
+            <p>Please fill out the form below to get in touch with us. We'll get back to you as soon as possible!</p>
+        </div>
+    
+        <form id="contactForm" onsubmit="return submitForm(); ">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <input type="submit" value="Submit">
+        </form> 
+        <footer>
+            <p>Thank you for being part of our Pokémon journey!</p>
+        </footer>
     </body>
-    <div class="contactForm_info">
-        <h2>Contact Us</h2>
-        <p>Please fill out the form below to get in touch with us. We'll get back to you as soon as possible!</p>
-    </div>
-
-    <form id="contactForm" onsubmit="return submitForm(); ">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        <input type="submit" value="Submit">
-    </form> 
+    
     <script>
         function submitForm(){
             window.location.href = "successform.html";
