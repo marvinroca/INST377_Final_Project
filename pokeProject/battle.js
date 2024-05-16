@@ -6,7 +6,70 @@ async function fetchPokemon() {
 
     await displayPokemon(pokemon1, 'pokemon1');
     await displayPokemon(pokemon2, 'pokemon2');
+
+    /* added new */
+    const result = calculateBattleResult(pokemon1, pokemon2);
+    await displayBattleResult(result, pokemon1, pokemon2);
+    /* added new */
 }
+/* added new */
+function calculateBattleResult(pokemon1, pokemon2) {
+    const stats1 = calculateTotalStats(pokemon1);
+    const stats2 = calculateTotalStats(pokemon2);
+
+    // Calculate differences in stats
+    const hpDifference = stats1.hp - stats2.hp;
+    const attackDifference = stats1.attack - stats2.attack;
+    const defenseDifference = stats1.defense - stats2.defense;
+
+    // Determine the winner based on total stats
+    if (hpDifference > 0 && attackDifference > 0 && defenseDifference > 0) {
+        return {
+            
+            winner: 'pokemon1',
+            message: 'Great battle!'
+        };
+    } else if (hpDifference < 0 && attackDifference < 0 && defenseDifference < 0) {
+        return {
+            winner: 'pokemon2',
+            message: 'Great battle!'
+        };
+    } else {
+        return {
+            winner: 'tie',
+            message: 'Both pokemon fought with all their might but it was a tie!'
+        };
+    }
+}
+
+function calculateTotalStats(pokemon) {
+    // Calculate total stats
+    const totalStats = pokemon.base_stamina + pokemon.base_attack + pokemon.base_defense;
+    return {
+        hp: pokemon.base_stamina,
+        attack: pokemon.base_attack,
+        defense: pokemon.base_defense,
+        total: totalStats
+    };
+}
+
+async function displayBattleResult(result, pokemon1, pokemon2) {
+    const battleResultElement = document.getElementById('battleResult');
+    battleResultElement.querySelector('h2').textContent = 'Battle Result';
+    if (result.winner === 'tie') {
+        battleResultElement.querySelector('p.name').textContent = 'It\'s a tie!';
+    } else {
+        const winnerPokemonName = result.winner === 'pokemon1' ? pokemon1.pokemon_name : pokemon2.pokemon_name;
+        battleResultElement.querySelector('p.name').textContent = 'Winner: ' + winnerPokemonName;
+    }
+    battleResultElement.querySelector('p.type').textContent = result.message;
+    // Hide image and stats
+    battleResultElement.querySelector('img').style.display = 'block';
+    battleResultElement.querySelectorAll('p span').forEach(span => {
+        span.textContent = '';
+    });
+}
+
 
 async function getRandomPokemon() {
     const response = await fetch("https://pokemon-go1.p.rapidapi.com/pokemon_stats.json", {
@@ -37,7 +100,4 @@ async function displayPokemon(pokemon, elementId) {
     element.querySelector('.hp').textContent = pokemon.base_stamina;
     element.querySelector('.attack').textContent = pokemon.base_attack;
     element.querySelector('.defense').textContent = pokemon.base_defense;
-    element.querySelector('.special-attack').textContent = "N/A"; 
-    element.querySelector('.special-defense').textContent = "N/A"; 
-    element.querySelector('.speed').textContent = "N/A";
 }

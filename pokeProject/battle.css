@@ -19,37 +19,48 @@ body {
     height: 100px;
 }
 
-nav {
+#fetchPokemon {
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px solid #333; /* Change the border color to black */
+    width: 200px;
+    margin-left: auto;
+}
+
+#buttonHeader {
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+#pokemon1, #pokemon2, #battleResult {
+    text-align: center;
+    margin: 20px auto;
+    margin-left: 20px;
+    max-width: 1000px;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 20px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#container-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background-color: #f8f8f8;
+    margin: 30px auto;
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: #333;
+    border-radius: 30px;
+    padding: 50;
+    height: 650px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
     padding: 10px;
-}
-
-nav .logo {
-    width: 50px;
-    height: 50px;
-}
-
-nav .website {
-    font-size: 24px;
-}
-
-nav .nav-links {
-    list-style-type: none;
-    display: flex;
-}
-
-nav .nav-links li {
-    margin: 0 10px;
-}
-
-nav .nav-links a {
-    text-decoration: none;
-    color: #333;
-}
-
-nav .page {
-    font-size: 20px;
 }
