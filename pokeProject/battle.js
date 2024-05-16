@@ -4,8 +4,8 @@ async function fetchPokemon() {
     const pokemon1 = await getRandomPokemon();
     const pokemon2 = await getRandomPokemon();
 
-    displayPokemon(pokemon1, 'pokemon1');
-    displayPokemon(pokemon2, 'pokemon2');
+    await displayPokemon(pokemon1, 'pokemon1');
+    await displayPokemon(pokemon2, 'pokemon2');
 }
 
 async function getRandomPokemon() {
@@ -21,15 +21,23 @@ async function getRandomPokemon() {
     return data[randomIndex];
 }
 
-function displayPokemon(pokemon, elementId) {
+async function getPokemonImage(pokemonName) {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`);
+    const data = await response.json();
+    return data.sprites.front_default;
+}
+
+async function displayPokemon(pokemon, elementId) {
     const element = document.getElementById(elementId);
+    const imageUrl = await getPokemonImage(pokemon.pokemon_name);
+
+    element.querySelector('img').src = imageUrl;
     element.querySelector('.name').textContent = pokemon.pokemon_name;
     element.querySelector('.type').textContent = pokemon.form;
     element.querySelector('.hp').textContent = pokemon.base_stamina;
     element.querySelector('.attack').textContent = pokemon.base_attack;
     element.querySelector('.defense').textContent = pokemon.base_defense;
-    element.querySelector('.special-attack').textContent = "N/A"; // Placeholder if not available
-    element.querySelector('.special-defense').textContent = "N/A"; // Placeholder if not available
-    element.querySelector('.speed').textContent = "N/A"; // Placeholder if not available
-    // Add image URL if available in the API data
+    element.querySelector('.special-attack').textContent = "N/A"; 
+    element.querySelector('.special-defense').textContent = "N/A"; 
+    element.querySelector('.speed').textContent = "N/A";
 }
