@@ -14,7 +14,7 @@ app.get('/poke_1_name', async (req, res) => {
     console.log('Attempting to GET all pokemon 1 names')
 
     const { data, error } = await supabase
-        .from('pokemon_1_name')
+        .from('Battles')
         .select()
 
     if(error) {
