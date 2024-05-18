@@ -47,7 +47,6 @@ function calculateBattleResult(pokemon1, pokemon2) {
             message: 'Both pokemon fought with all their might but it was a tie!'
         };
     }
-
 }
 
 function calculateTotalStats(pokemon) {
@@ -119,7 +118,7 @@ async function displayPokemon(pokemon, elementId) {
 }
 
 
-async function sendBattleDataToServer(pokemon1, pokemon2) {
+async function sendDataToServer(pokemon1, pokemon2) {
     const battleData = {
         poke_1_name: pokemon1.pokemon_name,
         poke_1_hp: pokemon1.base_stamina,
@@ -132,7 +131,8 @@ async function sendBattleDataToServer(pokemon1, pokemon2) {
     };
 
     try {
-        const response = await fetch('/Battles', {
+        console.log(battleData)
+        const response = await fetch('http://localhost:3000/Battles', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

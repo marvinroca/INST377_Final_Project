@@ -12,6 +12,25 @@ const supabaseUrl = 'https://enkdqgujydzxshvstnxa.supabase.co'
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVua2RxZ3VqeWR6eHNodnN0bnhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU4OTU3MjEsImV4cCI6MjAzMTQ3MTcyMX0.csia766qvY2VRyNWZDRhxleC3FapMkdvTCaOK6a8d_s'
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey)
 
+app.get('/', (req, res) => {
+    res.sendFile('public/home.html', {root: __dirname })
+})
+
+app.get('/Home', (req, res) => {
+    res.sendFile('public/home.html', {root: __dirname })
+})
+
+app.get('/About', (req, res) => {
+    res.sendFile('public/about.html', {root: __dirname })
+})
+
+app.get('/Help', (req, res) => {
+    res.sendFile('public/help.html', {root: __dirname })
+})
+
+
+
+
 app.get('/Battles', async (req, res) => {
     console.log('Attempting to GET all pokemon 1 names')
 
@@ -30,7 +49,7 @@ app.get('/Battles', async (req, res) => {
 
 // Insert Data
 app.post('/Battles', async (req, res) => {
-    console.log('Adding pokemon 1 and 2')
+    console.log('Adding Battle')
 
     console.log(req.body)
     var poke_1_name = req.body.poke_1_name;
@@ -56,5 +75,5 @@ app.post('/Battles', async (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log('Supabase connected')
+    console.log(`Express App Listening on Port ${port}`)
 })
