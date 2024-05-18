@@ -11,6 +11,9 @@ async function fetchPokemon() {
     const result = calculateBattleResult(pokemon1, pokemon2);
     await displayBattleResult(result, pokemon1, pokemon2);
     /* added new */
+
+    // Send battle data to the server
+    await sendDataToServer(pokemon1, pokemon2);
 }
 
 /* added new */
@@ -113,4 +116,33 @@ async function displayPokemon(pokemon, elementId) {
     element.querySelector('.hp').textContent = pokemon.base_stamina;
     element.querySelector('.attack').textContent = pokemon.base_attack;
     element.querySelector('.defense').textContent = pokemon.base_defense;
+}
+
+
+async function sendBattleDataToServer(pokemon1, pokemon2) {
+    const battleData = {
+        poke_1_name: pokemon1.pokemon_name,
+        poke_1_hp: pokemon1.base_stamina,
+        poke_1_attack: pokemon1.base_attack,
+        poke_1_defense: pokemon1.base_defense,
+        poke_2_name: pokemon2.pokemon_name,
+        poke_2_hp: pokemon2.base_stamina,
+        poke_2_attack: pokemon2.base_attack,
+        poke_2_defense: pokemon2.base_defense
+    };
+
+    try {
+        const response = await fetch('/Battles', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(battleData)
+        });
+
+        const data = await response.json();
+        console.log('Battle data saved:', data);
+    } catch (error) {
+        console.error('Error saving battle data:', error);
+    }
 }
