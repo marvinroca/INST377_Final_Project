@@ -108,3 +108,31 @@ footer {
     padding: 10px;
     animation: fade-in 1s ease-out;
 }
+
+#battleTableContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Optional: adjust height as needed */
+    margin-bottom: 20px; /* Add space below the table */
+}
+
+#battleTable table {
+    border-collapse: collapse;
+    width: auto; /* Adjust width as needed */
+    margin: auto;
+}
+
+#battleTableContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Optional: adjust height as needed */
+    margin-bottom: 20px; /* Add space below the table */
+}
+
+#battleTable table {
+    border-collapse: collapse;
+    width: auto; /* Adjust width as needed */
+    margin: auto;
+}
