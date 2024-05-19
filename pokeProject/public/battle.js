@@ -158,6 +158,7 @@ async function makeTable() {
 
     const table = document.createElement('table');
     table.border = 1;
+    table.id = 'battleDataTable'; // Assign an ID to the table
 
     const header = table.createTHead();
     const headerRow = header.insertRow();
@@ -194,6 +195,9 @@ async function makeTable() {
     // Append table to the container
     const container = document.getElementById('battleTable');
     container.appendChild(table);
+
+    // Initialize DataTable
+    $('#battleDataTable').DataTable();
 }
 
-window.onload = makeTable();
+window.onload = makeTable;
