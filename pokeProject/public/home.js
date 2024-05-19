@@ -16,7 +16,11 @@ function searchPokemon() {
         })
         .catch(error => {
             console.log('Error:', error);
-            alert('Pokemon not found!');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Pokemon not found!',
+            });
         });
 }
 
