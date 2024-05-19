@@ -155,6 +155,45 @@ function getBattles() {
 async function makeTable() {
     const battleData = await getBattles();
     console.log(battleData);
+
+    const table = document.createElement('table');
+    table.border = 1;
+
+    const header = table.createTHead();
+    const headerRow = header.insertRow();
+    const headers = ['Pokémon 1 Name', 'Pokémon 1 HP', 'Pokémon 1 Attack', 'Pokémon 1 Defense', 'Pokémon 2 Name', 'Pokémon 2 HP', 'Pokémon 2 Attack', 'Pokémon 2 Defense'];
+
+    headers.forEach(headerText => {
+        const cell = document.createElement('th');
+        cell.textContent = headerText;
+        headerRow.appendChild(cell);
+    });
+
+    // Create table body
+    const tbody = table.createTBody();
+
+    battleData.forEach(battle => {
+        const row = tbody.insertRow();
+        const cells = [
+            battle.poke_1_name ?? 'N/A',
+            battle.poke_1_hp ?? 'N/A',
+            battle.poke_1_attack ?? 'N/A',
+            battle.poke_1_defense ?? 'N/A',
+            battle.poke_2_name ?? 'N/A',
+            battle.poke_2_hp ?? 'N/A',
+            battle.poke_2_attack ?? 'N/A',
+            battle.poke_2_defense ?? 'N/A'
+        ];
+
+        cells.forEach(cellData => {
+            const cell = row.insertCell();
+            cell.textContent = cellData;
+        });
+    });
+
+    // Append table to the container
+    const container = document.getElementById('battleTable');
+    container.appendChild(table);
 }
 
 window.onload = makeTable();
