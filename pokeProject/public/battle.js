@@ -1,4 +1,5 @@
 document.getElementById('fetchPokemon').addEventListener('click', fetchPokemon);
+var host = window.location.origin;
 
 async function fetchPokemon() {
     const pokemon1 = await getRandomPokemon();
@@ -120,19 +121,19 @@ async function displayPokemon(pokemon, elementId) {
 
 async function sendDataToServer(pokemon1, pokemon2) {
     const battleData = {
-        poke_1_name: pokemon1.pokemon_name,
-        poke_1_hp: pokemon1.base_stamina,
-        poke_1_attack: pokemon1.base_attack,
-        poke_1_defense: pokemon1.base_defense,
-        poke_2_name: pokemon2.pokemon_name,
-        poke_2_hp: pokemon2.base_stamina,
-        poke_2_attack: pokemon2.base_attack,
-        poke_2_defense: pokemon2.base_defense
+        pokemon_1_name: pokemon1.pokemon_name,
+        pokemon_1_hp: pokemon1.base_stamina,
+        pokemon_1_attack: pokemon1.base_attack,
+        pokemon_1_defense: pokemon1.base_defense,
+        pokemon_2_name: pokemon2.pokemon_name,
+        pokemon_2_hp: pokemon2.base_stamina,
+        pokemon_2_attack: pokemon2.base_attack,
+        pokemon_2_defense: pokemon2.base_defense
     };
 
     try {
         console.log(battleData)
-        const response = await fetch('http://localhost:3000/Battles', {
+        const response = await fetch(`${host}/Battles`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -146,3 +147,14 @@ async function sendDataToServer(pokemon1, pokemon2) {
         console.error('Error saving battle data:', error);
     }
 }
+
+function getBattles() {
+    return fetch(`${host}/Battle`).then((res) => res.json())
+}
+
+async function makeTable() {
+    const battleData = await getBattles();
+    console.log(battleData);
+}
+
+window.onload = makeTable();
