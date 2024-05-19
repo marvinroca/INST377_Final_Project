@@ -1,3 +1,30 @@
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -6,12 +33,14 @@ body {
 .pokemon-container {
     display: flex;
     justify-content: space-around;
+    animation: fade-in 1s ease-out
 }
 
 .pokemon {
     border: 1px solid #ccc;
     padding: 20px;
     width: 45%;
+    animation: fade-in 1s ease-out;
 }
 
 .pokemon img {
@@ -29,18 +58,21 @@ body {
     border: 2px solid #333; /* Change the border color to black */
     width: 200px;
     margin-left: auto;
+    animation: slide-in 0.5s ease-out;
 }
 
 #buttonHeader {
     align-items: center;
     align-content: center;
     text-align: center;
+    animation: fade-in 1s ease-out;
 }
 
 
 .winner-image {
     display: block;
     margin: 0 auto; /* Center the image horizontally */
+    animation: fade-in 1s ease-out;
 }
 
 
@@ -53,6 +85,7 @@ body {
     border-radius: 30px;
     padding: 20px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: slide-in 0.5s ease-out;
 }
 
 #container-wrapper {
@@ -65,6 +98,7 @@ body {
     border-radius: 30px;
     padding: 50;
     height: 650px;
+    animation: fade-in 1s ease-out;
 }
 
 footer {
@@ -72,7 +106,21 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
-    margin-top: 40px;
+    animation: fade-in 1s ease-out;
+}
+
+#battleTableContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Optional: adjust height as needed */
+    margin-bottom: 20px; /* Add space below the table */
+}
+
+#battleTable table {
+    border-collapse: collapse;
+    width: auto; /* Adjust width as needed */
+    margin: auto;
 }
 
 #battleTableContainer {

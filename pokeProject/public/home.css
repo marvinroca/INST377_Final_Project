@@ -1,4 +1,39 @@
 
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 #pokemonContainer {
     margin: 20px auto;
     max-width: 500px;
@@ -6,6 +41,7 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation:  fade-in 1s ease-out; 
 }
 
 #search-container {
@@ -15,7 +51,7 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
+    animation: fade-in 1s ease-out;
     
 }
 
@@ -26,6 +62,7 @@
     border: 2px solid #333; /* Change the border color to black */
     width: 200px;
     margin-left: auto;
+    animation: slide-in 0.5s ease-out;
 }
 
 #container-1 {
@@ -37,6 +74,7 @@
     padding: 20px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-right: 20px;
+    animation: fade-in 1s ease-out;
 }
 
 #container-2 {
@@ -55,6 +93,7 @@
     border-radius: 30px;
     padding: 20px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fade-in 1s ease-out;
 }
 
 #container-wrapper {
@@ -67,6 +106,7 @@
     border-radius: 30px;
     padding: 50;
     height: 650px;
+    animation: fade-in 1s ease-out;
 }
 
 #searchHeader {
@@ -115,4 +155,5 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
+    animation: fade-in 1s ease-out;
 }
