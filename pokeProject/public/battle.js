@@ -15,6 +15,9 @@ async function fetchPokemon() {
 
     // Send battle data to the server
     await sendDataToServer(pokemon1, pokemon2);
+    
+    // Update table 
+    await makeTable();
 }
 
 /* added new */
@@ -156,6 +159,11 @@ async function makeTable() {
     const battleData = await getBattles();
     console.log(battleData);
 
+    
+    // Clear previous table
+    const container = document.getElementById('battleTable');
+    container.innerHTML = '';
+
     const table = document.createElement('table');
     table.border = 1;
 
@@ -191,9 +199,5 @@ async function makeTable() {
         });
     });
 
-    // Append table to the container
-    const container = document.getElementById('battleTable');
     container.appendChild(table);
 }
-
-window.onload = makeTable();
